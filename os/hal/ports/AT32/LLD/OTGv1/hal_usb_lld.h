@@ -283,6 +283,13 @@ typedef struct {
    * @brief   Total transmit transfer size.
    */
   size_t                        totsize;
+#if defined(USB_REPORT_INTERVAL_ENABLE)
+  /**
+   * @brief   Current number of USB frames (SOF) counted 
+   *          since the last report was sent.
+   */
+  uint8_t                       report_interval_count;
+#endif
 } USBInEndpointState;
 
 /**
@@ -498,6 +505,12 @@ struct USBDriver {
    * @brief   Pointer to the next address in the packet memory.
    */
   uint32_t                      pmnext;
+#if defined(USB_REPORT_INTERVAL_ENABLE)
+  /**
+   * @brief   Number of USB frames (SOF) between reports
+   */
+  uint8_t                       report_interval[USB_MAX_ENDPOINTS];
+#endif
 };
 
 /*===========================================================================*/
