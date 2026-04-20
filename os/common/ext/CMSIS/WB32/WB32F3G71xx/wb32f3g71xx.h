@@ -1026,7 +1026,7 @@ static const uint32_t flash_size_code_map[16] = {
 
 #define DBGMCU_BASE           (0xE0042000UL)  // E004_2000
 
-
+#define UID_BASE              (0x1FFFF204UL)
 
 
 

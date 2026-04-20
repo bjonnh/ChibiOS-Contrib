@@ -51,12 +51,12 @@ void wb32_set_main_clock_to_mhsi(void) {
   PWR->ANAKEY1 = 0x03;
   PWR->ANAKEY2 = 0x0C;
 
-  /* Configure Flash prefetch, Cache and wait state */
-  CACHE->CR = CACHE_CR_CHEEN | CACHE_CR_PREFEN_ON | CACHE_CR_LATENCY_0WS;
-
   /* Select FHSI as system clock source */
   RCC->MAINCLKSRC = RCC_MAINCLKSRC_MHSI;
   RCC->MAINCLKUEN = RCC_MAINCLKUEN_ENA;
+
+  /* Configure Flash prefetch, Cache and wait state */
+  CACHE->CR = CACHE_CR_CHEEN | CACHE_CR_PREFEN_ON | CACHE_CR_LATENCY_0WS;
 
   /* PLL Disable */
   ANCTL->PLLENR = 0x00;
